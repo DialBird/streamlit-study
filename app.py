@@ -1,7 +1,12 @@
 import streamlit as st
+import pinecone
+
 from langchain.llms import OpenAI
 from langchain.schema import AIMessage, HumanMessage, SystemMessage
 from langchain.chat_models import ChatOpenAI
+
+pinecone.init(api_key=st.secrets["pc_api_key"], environment=st.secrets["pc_env"])
+index = pinecone.Index("rerankers")
 
 st.title("🦜🔗 Langchain Quickstart App")
 
